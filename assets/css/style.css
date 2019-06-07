@@ -1,0 +1,51 @@
+.card-img-overlay{
+    padding: 0%;
+    width: 500px;
+    height: 80px;
+    text-align: center;
+}
+
+.card-img{
+    position: relative;
+    left: -20px;
+    width: 2000px;
+    height: 200px;
+}
+
+h1{
+    position: relative;
+    left: 400px;
+    top: 50px;
+
+}
+
+.currentTrain{
+    position: relative;
+    left: 200px;
+    margin-top: 20px;
+    width: 1000px;
+    height: 420px;
+    border: 1px solid;
+    border-color: #1D1364;
+}
+
+.table{
+    position: relative;
+    top: -500px;
+    font-size: 14px;
+}
+
+.addTrain{
+    position: relative;
+    left: -20px;
+    margin-top: 20px;
+    width: 1000px;
+    border: 1px solid;
+    border-color: #1D1364;
+    top: 340px;
+}
+
+.card-header{
+    background: #1D1364;
+    color: white;
+}
