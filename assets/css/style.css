@@ -49,6 +49,11 @@ h1{
     color: white;
 }
 
+#pikaPika{
+    width: 200px;
+    margin-top: -10px;
+}
+
 .btn.btn-primary{
     background:  #1D1364;
 }
