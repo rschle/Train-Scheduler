@@ -25,14 +25,19 @@
       var trainTime = $("#train-time").val().trim();
       var trainFrequency = $("#frequency").val().trim();
 
-      var newTrain = {
-          name: trainName,
-          destination: trainDestination,
-          time: trainTime,
-          frequency: trainFrequency
-      };
+      // var newTrain = {
+      //     name: trainName,
+      //     destination: trainDestination,
+      //     time: trainTime,
+      //     frequency: trainFrequency
+      // };
 
-      database.ref().push(newTrain);
+      database.ref().push({
+        name: trainName,
+        destination: trainDestination,
+        time: trainTime,
+        frequency: trainFrequency
+      });
 
       console.log(newTrain.name);
       console.log(newTrain.destination);
@@ -44,4 +49,14 @@
       $("#train-time").val("");
       $("#frequency").val("");
 
+  });
+
+  database.ref().on("child_added", function(snapshot){
+    var trainName = snapshot.val().name;
+    var trainDestination = snapshot.val().destination;
+    var trainTime = snapshot.val().time;
+    var trainFrequency = snapshot.val().frequency;
+
+
+  var now = moment(new Date());
   });
