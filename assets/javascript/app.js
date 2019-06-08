@@ -25,25 +25,19 @@
       var trainTime = $("#train-time").val().trim();
       var trainFrequency = $("#frequency").val().trim();
 
-      // var newTrain = {
-      //     name: trainName,
-      //     destination: trainDestination,
-      //     time: trainTime,
-      //     frequency: trainFrequency
-      // };
-
-      database.ref().push({
+      var newTrain = database.ref().push({
         name: trainName,
         destination: trainDestination,
         time: trainTime,
         frequency: trainFrequency
       });
 
-      console.log(newTrain.name);
-      console.log(newTrain.destination);
-      console.log(newTrain.time);
-      console.log(newTrain.frequency);
+      // console.log(newTrain.name);
+      // console.log(newTrain.destination);
+      // console.log(newTrain.time);
+      // console.log(newTrain.frequency);
 
+      //clearing input fields
       $("#train-name").val("");
       $("#destination").val("");
       $("#train-time").val("");
@@ -57,6 +51,37 @@
     var trainTime = snapshot.val().time;
     var trainFrequency = snapshot.val().frequency;
 
+  //storing train's first time of the day in a variable 
+    var startTime = moment().format(trainTime, "HH:mm");
+    console.log(startTime);
+  //have to store current time in a variable
+    var timeNow = moment();
+      console.log("Time now is: " + moment(timeNow).format("HH:mm"));
 
-  var now = moment(new Date());
+
+  //to find out how many minutes until the next train, we first need to figure out 
+  //the difference between the start time for the train and the current time
+
+    var timeDiff = Math.abs(moment(startTime, "HH:mm").diff(timeNow, "minutes"));
+      console.log(timeDiff)
+
+    var remainderTime = timeDiff % trainFrequency;
+    console.log(remainderTime);
+
+    var minAway = trainFrequency - remainderTime;
+    console.log(minAway);
+
+    var nextTrainArrival = moment().add(minAway, "minutes");
+
+    console.log(moment(nextTrainArrival).format("HH:mm"));
+
+
+    var trTrain = $("<tr>");
+    trTrain.append($("<td>").text(trainName));
+    trTrain.append($("<td>").text(trainDestination));
+    trTrain.append($("<td>").text(trainFrequency));
+    trTrain.append($("<td>").text(moment(nextTrainArrival).format("HH:mm")));
+    trTrain.append($("<td>").text(minAway));
+    $(".table").append(trTrain);
+
   });

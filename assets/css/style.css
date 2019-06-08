@@ -7,8 +7,7 @@
 
 .card-img{
     position: relative;
-    left: -20px;
-    width: 2000px;
+    width: 100%;
     height: 200px;
 }
 
